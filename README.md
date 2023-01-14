@@ -3,7 +3,8 @@ Tool to upload Gnome-Shell extensions to [extensions.gnome.org](https://extensio
 
 ![Build Status](https://github.com/dmzoneill/gnome-extension-publisher/actions/workflows/main.yml/badge.svg)
 
-This is a fork of 'gnome-extension-publisher' which seems to be abandoned.
+This is a fork of 'gnome-extension-uploader' which seems to be abandoned.  You can find this new pytohn module on [https://pypi.org/project/gnome-extension-publisher/](https://pypi.org/project/gnome-extension-publisher/)
+
 
 ## Install
 ```console
