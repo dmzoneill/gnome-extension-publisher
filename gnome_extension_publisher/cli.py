@@ -1,12 +1,16 @@
 import os
-from shutil import rmtree, which
-from typing import List, Optional
+from shutil import rmtree
+from typing import Optional
 
-import requests
 import typer
-
-from gnome_extension_publisher.utils import (create_zip_file, get_extension_metadata, glib_compile_schemas,
-                                             verifiy_extension_directory, verify_extension_archive, upload)
+from gnome_extension_publisher.utils import (
+    create_zip_file,
+    get_extension_metadata,
+    glib_compile_schemas,
+    upload,
+    verify_extension_archive,
+    verify_extension_directory,
+)
 
 app = typer.Typer()
 
@@ -17,7 +21,7 @@ def publisharchive(
     username: Optional[str] = os.environ.get("GEP_USERNAME", None),
     password: Optional[str] = os.environ.get("GEP_PASSWORD", None),
 ):
-    directory = os.path.abspath(directory)
+    file = os.path.abspath(file)
 
     if not verify_extension_archive(file):
         typer.echo("Not a valid extension archive.")
@@ -31,11 +35,10 @@ def publisharchive(
 def publish(
     directory: str = os.getcwd(),
     compile_schemas: bool = False,
-    ignore_directories: Optional[List[str]] = [],
     username: Optional[str] = os.environ.get("GEP_USERNAME", None),
     password: Optional[str] = os.environ.get("GEP_PASSWORD", None),
 ):
-    if not verifiy_extension_directory(directory):
+    if not verify_extension_directory(directory):
         typer.echo("Not a valid extension directory.")
         return
 
@@ -44,7 +47,6 @@ def publish(
     build(
         compile_schemas=compile_schemas,
         directory=directory,
-        ignore_directories=ignore_directories,
     )
 
     dist_directory = os.path.join(directory, "dist")
@@ -58,14 +60,10 @@ def publish(
 
 
 @app.command()
-def build(
-    compile_schemas: bool = False,
-    directory: str = os.getcwd(),
-    ignore_directories: Optional[List[str]] = [],
-):
+def build(compile_schemas: bool = False, directory: str = os.getcwd()):
     directory = os.path.abspath(directory)
 
-    if not verifiy_extension_directory(directory):
+    if not verify_extension_directory(directory):
         typer.echo("Not a valid extension directory.")
         return
 
@@ -83,6 +81,5 @@ def build(
     full_zip_path = os.path.join(
         dist_directory, f"{metadata['uuid']}_v{metadata['version']}.zip"
     )
-    create_zip_file(full_zip_path, directory,
-                    ignore_directories=ignore_directories)
+    create_zip_file(full_zip_path, directory)
     typer.echo(f"Created extension zip file: {full_zip_path}")

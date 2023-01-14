@@ -1,15 +1,15 @@
 import json
 import os
 import zipfile
-from typing import List
-import typer
 from shutil import which
+from typing import Optional
+
 import requests
+import typer
 
 
-def create_zip_file(file_path, target_dir, ignore_directories: List[str] = []):
-    directories_to_ignore = [".git", ".github",
-                             "dist"] + list(ignore_directories)
+def create_zip_file(file_path, target_dir):
+    directories_to_ignore = [".git", ".github", "dist"]
     zipobj = zipfile.ZipFile(file_path, "w", zipfile.ZIP_DEFLATED)
     rootlen = len(target_dir) + 1
     for base, dirs, files in os.walk(target_dir):
@@ -33,7 +33,7 @@ def glib_compile_schemas(directory: str):
     os.popen(f"glib-compile-schemas {schemas_directory}")
 
 
-def verifiy_extension_directory(path: str):
+def verify_extension_directory(path: str):
     required_files = ["extension.js", "metadata.json"]
     valid = True
     for f in required_files:
@@ -44,7 +44,7 @@ def verifiy_extension_directory(path: str):
 
 
 def verify_extension_archive(path: str):
-    with zipfile.ZipFile('images.zip') as zf:
+    with zipfile.ZipFile(path) as zf:
         if "extension.js" in zf.namelist() and "metadata.json" in zf.namelist():
             return True
         return False
@@ -55,10 +55,9 @@ def get_extension_metadata(path: str):
     return json.load(open(metadata_file))
 
 
-def upload(username: str, password: str, zipfile: str):
+def upload(username: Optional[str], password: Optional[str], zipfile: str):
     client = requests.Session()
-    client.headers.update(
-        {"referer": "https://extensions.gnome.org/accounts/login/"})
+    client.headers.update({"referer": "https://extensions.gnome.org/accounts/login/"})
     client.get("https://extensions.gnome.org/accounts/login/")
     csrftoken = client.cookies["csrftoken"]
     login_response = client.post(
@@ -71,7 +70,10 @@ def upload(username: str, password: str, zipfile: str):
         },
     )
 
-    if "Please enter a correct username and password. Note that both fields may be case-sensitive." in login_response.text:
+    if (
+        "Please enter a correct username and password. Note that both fields may be case-sensitive."
+        in login_response.text
+    ):
         typer.echo("Wrong username or password for extensions.gnome.org")
         return
 
