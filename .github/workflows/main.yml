@@ -51,21 +51,21 @@ jobs:
           python3 -m pip install --upgrade build
           python3 -m pip install --upgrade twine
           python3 -m build
-          mv ./dist/gnome-extension-publisher-$PUBVER.tar.gz ./dist/gnome-extension-publisher-${{ github.sha }}.tar.gz
-          mv ./dist/gnome-extension-publisher-$PUBVER-py3-none-any.whl ./dist/gnome-extension-publisher-${{ github.sha }}.whl
+          mv ./dist/gnome_extension_publisher-$PUBVER.tar.gz ./dist/gnome_extension_publisher-${{ github.sha }}.tar.gz
+          mv ./dist/gnome_extension_publisher-$PUBVER-py3-none-any.whl ./dist/gnome_extension_publisher-${{ github.sha }}.whl
           ls -liaR .
-      - name: Archive gnome-extension-publisher whl artifact
+      - name: Archive gnome_extension_publisher whl artifact
 #        if: steps.changes.outputs.src == 'true'
         uses: actions/upload-artifact@v2
         with:
-          name: gnome-extension-publisher-${{ github.sha }}.whl
-          path: dist/gnome-extension-publisher-${{ github.sha }}.whl 
-      - name: Archive gnome-extension-publisher tar artifact
+          name: gnome_extension_publisher-${{ github.sha }}.whl
+          path: dist/gnome_extension_publisher-${{ github.sha }}.whl 
+      - name: Archive gnome_extension_publisher tar artifact
 #        if: steps.changes.outputs.src == 'true'
         uses: actions/upload-artifact@v2
         with:
-          name: gnome-extension-publisher-${{ github.sha }}.tar.gz
-          path: dist/gnome-extension-publisher-${{ github.sha }}.tar.gz
+          name: gnome_extension_publisher-${{ github.sha }}.tar.gz
+          path: dist/gnome_extension_publisher-${{ github.sha }}.tar.gz
   upload-extension:
     if: >-
       github.event_name == 'push' || 
@@ -77,11 +77,11 @@ jobs:
       - name: Download tar artifact
         uses: actions/download-artifact@v3
         with:
-          name: gnome-extension-publisher-${{ github.sha }}.tar.gz
+          name: gnome_extension_publisher-${{ github.sha }}.tar.gz
       - name: Download whl artifact
         uses: actions/download-artifact@v3
         with:
-          name: gnome-extension-publisher-${{ github.sha }}.whl
+          name: gnome_extension_publisher-${{ github.sha }}.whl
       - name: Install webstore cli
         run: |-
           pip install gnome-extension-publisher
