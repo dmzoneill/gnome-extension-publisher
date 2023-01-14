@@ -84,15 +84,9 @@ jobs:
           pip install gnome-extension-publisher
       - name: Upload step
         run: |-
-          # shellcheck disable=SC2035
           mkdir dist
-          # shellcheck disable=SC2035
           mv *.tar.gz dist/
-          # shellcheck disable=SC2035
           mv *.whl dist/
-          # shellcheck disable=SC2035
           printf "[pypi]\nusername = __token__\npassword = ${{ secrets.PYPI_TOKEN }}" > ~/.pypirc
-          # shellcheck disable=SC2035
           python3 -m pip install --upgrade twine 
-          # shellcheck disable=SC2035
           python3 -m twine upload --repository pypi dist/*
