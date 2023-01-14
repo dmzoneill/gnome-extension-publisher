@@ -98,4 +98,4 @@ jobs:
           # shellcheck disable=SC2035
           python3 -m pip install --upgrade twine 
           # shellcheck disable=SC2035
-          python3 -m twine upload --repository pypi dist/*
+          python3 -m twine upload --verbose --repository pypi dist/*
