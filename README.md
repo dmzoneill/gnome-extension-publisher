@@ -34,4 +34,4 @@ production:
 ```
 
 ## Support
-Feel free to submit a pull request or consider making a donation on [Flatter](https://flattr.com/@SebastianNoelLuebke).
+Feel free to submit a pull request
