@@ -1,6 +1,8 @@
 # Gnome Extension Publisher
 Tool to upload Gnome-Shell extensions to [extensions.gnome.org](https://extensions.gnome.org).
 
+![Build Status](https://github.com/dmzoneill/gnome-extension-publisher/actions/workflows/main.yml/badge.svg)
+
 This is a fork of 'gnome-extension-publisher' which seems to be abandoned.
 
 ## Install
