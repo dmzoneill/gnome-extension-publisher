@@ -29,22 +29,12 @@ jobs:
       github.event_name == 'push' || 
       github.event.pull_request.merged == true
     name: Build publisher
-#    needs: run-lint
+    needs: run-lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-#     - uses: dorny/paths-filter@v2
-#       id: changes
-#       with:
-#         filters: |
-#           src:
-#             - 'gnome-extension-publisher/**'
-#             - '*.py' 
-#             - '*.toml'
       - name: Build
-#        if: steps.changes.outputs.src == 'true'
         run: |-
           pip3 install trove-classifiers ptyprocess msgpack lockfile distlib tomlkit tomli shellingham rapidfuzz pyrsistent poetry-core platformdirs pkginfo pexpect packaging jeepney jaraco.classes filelock dulwich crashtest cachecontrol virtualenv SecretStorage jsonschema cleo keyring poetry-plugin-export poetry
           python3 -m pip install --upgrade build
