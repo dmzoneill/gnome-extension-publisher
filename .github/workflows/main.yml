@@ -49,20 +49,20 @@ jobs:
           python3 -m pip install --upgrade build
           python3 -m pip install --upgrade twine
           python3 -m build
-          mv dist/gnome-extension-publisher*.tar.gz dist/gnome-extension-publisher.tar.gz
-          mv dist/gnome-extension-publisher*.whl dist/gnome-extension-publisher.whl
+          mv dist/gnome-extension-publisher*.tar.gz dist/gnome-extension-publisher-${{ github.sha }}.tar.gz
+          mv dist/gnome-extension-publisher*.whl dist/gnome-extension-publisher-${{ github.sha }}.whl
       - name: Archive gnome-extension-publisher whl artifact
         if: steps.changes.outputs.src == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: gnome-extension-publisher-${{ github.sha }}.whl
-          path: dist/gnome-extension-publisher.whl   
+          path: dist/gnome-extension-publisher-${{ github.sha }}.whl 
       - name: Archive gnome-extension-publisher tar artifact
         if: steps.changes.outputs.src == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: gnome-extension-publisher-${{ github.sha }}.tar.gz
-          path: dist/gnome-extension-publisher.tar.gz
+          path: dist/gnome-extension-publisher-${{ github.sha }}.tar.gz
   upload-extension:
     if: >-
       github.event_name == 'push' || 
