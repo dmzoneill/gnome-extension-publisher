@@ -1,4 +1,3 @@
-// pipeline check
 import os
 from shutil import rmtree, which
 from typing import List, Optional
