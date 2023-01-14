@@ -17,7 +17,7 @@ Description-Content-Type: text/markdown
 # Gnome Extension publisher
 Tool to upload Gnome-Shell extensions to [extensions.gnome.org](https://extensions.gnome.org).
 
-This is a fork of 'gnome-extension-publisher' which seems to be abandoned.
+This is a fork of 'gnome-extension-uploader' which seems to be abandoned.
 
 ## Install
 ```console
