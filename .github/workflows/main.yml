@@ -35,16 +35,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            src:
-              - 'gnome-extension-publisher/**'
-              - '*.py' 
-              - '*.toml'
+#     - uses: dorny/paths-filter@v2
+#       id: changes
+#       with:
+#         filters: |
+#           src:
+#             - 'gnome-extension-publisher/**'
+#             - '*.py' 
+#             - '*.toml'
       - name: Build
-        if: steps.changes.outputs.src == 'true'
+#        if: steps.changes.outputs.src == 'true'
         run: |-
           pip3 install trove-classifiers ptyprocess msgpack lockfile distlib tomlkit tomli shellingham rapidfuzz pyrsistent poetry-core platformdirs pkginfo pexpect packaging jeepney jaraco.classes filelock dulwich crashtest cachecontrol virtualenv SecretStorage jsonschema cleo keyring poetry-plugin-export poetry
           python3 -m pip install --upgrade build
@@ -53,13 +53,13 @@ jobs:
           mv dist/gnome-extension-publisher*.tar.gz dist/gnome-extension-publisher-${{ github.sha }}.tar.gz
           mv dist/gnome-extension-publisher*.whl dist/gnome-extension-publisher-${{ github.sha }}.whl
       - name: Archive gnome-extension-publisher whl artifact
-        if: steps.changes.outputs.src == 'true'
+#        if: steps.changes.outputs.src == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: gnome-extension-publisher-${{ github.sha }}.whl
           path: dist/gnome-extension-publisher-${{ github.sha }}.whl 
       - name: Archive gnome-extension-publisher tar artifact
-        if: steps.changes.outputs.src == 'true'
+#        if: steps.changes.outputs.src == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: gnome-extension-publisher-${{ github.sha }}.tar.gz
