@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gnome-extension-publisher"
-version = "0.4.4"
+version = "0.4.5"
 description = ""
 readme = "README.md"
 repository = "https://github.com/dmzoneill/gnome-extension-publisher"
@@ -9,8 +9,8 @@ authors = ["David O Neill <dmz.oneill@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-requests = "^2.24.0"
-typer = "^0.3.2"
+requests = "*"
+typer = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.0.2"

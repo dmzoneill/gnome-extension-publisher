@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: gnome-extension-publisher
-Version: 0.4.4
+Version: 0.4.5
 Summary: 
 Home-page: https://github.com/dmzoneill/gnome-extension-publisher
 Author: David O Neill
@@ -9,8 +9,8 @@ Requires-Python: >=3.8,<4.0
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.8
 Classifier: Programming Language :: Python :: 3.9
-Requires-Dist: requests (>=2.24.0,<3.0.0)
-Requires-Dist: typer (>=0.3.2,<0.4.0)
+Requires-Dist: requests
+Requires-Dist: typer
 Project-URL: Repository, https://github.com/dmzoneill/gnome-extension-publisher
 Description-Content-Type: text/markdown
 
