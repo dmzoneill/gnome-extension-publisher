@@ -33,23 +33,5 @@ gep --help # for help :)
 
 You can also provide your username and password via environment variables (GEP_USERNAME, GEP_PASSWORD).
 
-## Use in Gitlab CI/CD
-Add GEP_USERNAME and GEP_PASSWORD to your build variables in your repository settings.
-
-This will publish every tag on [extensions.gnome.org](https://extensions.gnome.org)
-```yaml
-stages:
-  - publish
-
-production:
-  image: python:3.8.3-buster
-  stage: publish
-  script:
-    - pip install gnome-extension-publisher
-    - gep publish
-  only:
-    - tags
-```
-
 ## Support
 Feel free to submit a pull request
