@@ -3,7 +3,8 @@ Tool to upload Gnome-Shell extensions to [extensions.gnome.org](https://extensio
 
 ![Build Status](https://github.com/dmzoneill/gnome-extension-publisher/actions/workflows/main.yml/badge.svg)
 
-This is a fork of 'gnome-extension-uploader' which seems to be abandoned.  You can find this new pytohn module on [https://pypi.org/project/gnome-extension-publisher/](https://pypi.org/project/gnome-extension-publisher/)
+This is a fork of 'gnome-extension-uploader' which seems to be abandoned.  
+You can find this python module on [https://pypi.org/project/gnome-extension-publisher/](https://pypi.org/project/gnome-extension-publisher/)
 
 
 ## Install
@@ -20,23 +21,6 @@ gep --help # for help :)
 
 You can also provide your username and password via environment variables (GEP_USERNAME, GEP_PASSWORD).
 
-## Use in Gitlab CI/CD
-Add GEP_USERNAME and GEP_PASSWORD to your build variables in your repository settings.
-
-This will publish every tag on [extensions.gnome.org](https://extensions.gnome.org)
-```yaml
-stages:
-  - publish
-
-production:
-  image: python:3.8.3-buster
-  stage: publish
-  script:
-    - pip install gnome-extension-publisher
-    - gep publish
-  only:
-    - tags
-```
 
 ## Support
 Feel free to submit a pull request
