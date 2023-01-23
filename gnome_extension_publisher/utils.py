@@ -1,4 +1,3 @@
-// dmz.oneill@gmail.com
 import json
 import os
 import zipfile
