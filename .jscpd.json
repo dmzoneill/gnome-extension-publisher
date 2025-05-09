@@ -1,0 +1,13 @@
+{
+  "threshold": 5,
+  "reporters": [
+    "consoleFull"
+  ],
+  "ignore": [
+    "**/__snapshots__/**",
+    "**.html",
+    "**/.github/workflows/ci.yaml",
+    "**/helper**"
+  ],
+  "absolute": true
+}
