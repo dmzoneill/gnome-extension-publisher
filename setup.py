@@ -11,7 +11,7 @@ entry_points = {"console_scripts": ["gep = gnome_extension_publisher.cli:app"]}
 
 setup_kwargs = {
     "name": "gnome-extension-publisher",
-    "version": "0.4.12",
+    "version": "0.4.13",
     "description": "",
     "long_description": (
         "# Gnome Extension Publisher\nFork of abandoned gnome-extension-publisher, "
