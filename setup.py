@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
+"""Setup script for gnome-extension-publisher."""
+
 from setuptools import setup
 
 packages = ["gnome_extension_publisher"]
 
 package_data = {"": ["*"]}
 
-install_requires = ["requests", "typer"]
+install_requires = [
+    "requests>=2.33.0",
+    "typer",
+    "urllib3>=2.8.0",
+    "pygments>=2.20.0",
+]
 
 entry_points = {"console_scripts": ["gep = gnome_extension_publisher.cli:app"]}
 
@@ -15,11 +22,15 @@ setup_kwargs = {
     "description": "",
     "long_description": (
         "# Gnome Extension Publisher\nFork of abandoned gnome-extension-publisher, "
-        "This tool to uploads Gnome-Shell extensions to [extensions.gnome.org](https://extensions.gnome.org).\n\n"
-        "## Install\n```console\npip install gnome-extension-publisher\n```\n\n## How to use\n```console\ngep build"
+        "This tool to uploads Gnome-Shell extensions to "
+        "[extensions.gnome.org](https://extensions.gnome.org).\n\n"
+        "## Install\n```console\npip install gnome-extension-publisher\n```\n\n"
+        "## How to use\n```console\ngep build"
         " # runs glib-compile-schemas and builds the zip file\n"
-        "gep publish --username <YOUR_EXTENSIONS_GNOME_ORG_USERNAME> --password <YOUR_EXTENSIONS_GNOME_ORG_PASSWORD>\n"
-        "gep --help # for help :)\n```\n\nYou can also provide your username and password via environment variables"
+        "gep publish --username <YOUR_EXTENSIONS_GNOME_ORG_USERNAME> "
+        "--password <YOUR_EXTENSIONS_GNOME_ORG_PASSWORD>\n"
+        "gep --help # for help :)\n```\n\n"
+        "You can also provide your username and password via environment variables"
         " (GEP_USERNAME, GEP_PASSWORD).\n\n## Support\nFeel free to submit a pull request"
     ),
     "author": "David O Neill",
@@ -31,7 +42,7 @@ setup_kwargs = {
     "package_data": package_data,
     "install_requires": install_requires,
     "entry_points": entry_points,
-    "python_requires": ">=3.8,<4.0",
+    "python_requires": ">=3.10,<4.0",
 }
 
 
