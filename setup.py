@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Setup script for gnome-extension-publisher."""
 
 from setuptools import setup
