@@ -9,13 +9,13 @@ authors = ["David O Neill <dmz.oneill@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-requests = ">=2.33.0"
+requests = ">=2.34.2"
 typer = "*"
 urllib3 = ">=2.8.0"
-pygments = ">=2.20.0"
+pygments = ">=2.21.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^9.0.3"
+pytest = "^9.1.1"
 
 [tool.poetry.scripts]
 gep = "gnome_extension_publisher.cli:app"
