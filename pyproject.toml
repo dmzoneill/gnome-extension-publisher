@@ -15,7 +15,7 @@ urllib3 = ">=2.8.0"
 pygments = ">=2.21.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^9.1.1"
+pytest = "^9.2.0"
 
 [tool.poetry.scripts]
 gep = "gnome_extension_publisher.cli:app"
